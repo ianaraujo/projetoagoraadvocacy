@@ -44,9 +44,7 @@ def manageProposition(request, id):
     if request.method == 'PUT':
         updatedProposition= request.data
         if 'keyWords' in updatedProposition and updatedProposition['keyWords']!="":
-            print(updatedProposition)
             updatedProposition['keyWords']= json.dumps(updatedProposition['keyWords'])
-            print(updatedProposition)
         serializer= PropositionSerializer(proposition, updatedProposition)
 
         if serializer.is_valid():
