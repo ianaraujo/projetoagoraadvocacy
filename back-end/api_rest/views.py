@@ -7,7 +7,7 @@ from .serializers import PropositionSerializer
 
 
 @api_view(['GET'])
-def getAllPropositions():
+def getAllPropositions(request):
     try:
         propositions= Propositions.objects.all()
 
