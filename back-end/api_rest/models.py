@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class Propositions(models.Model):
+    
+    id= models.AutoField(primary_key=True)
+    name= models.CharField(max_length=24, unique=True, default="")
+    url= models.URLField(max_length=200, unique=True, default="")
+    keyWords= models.TextField(default="")
