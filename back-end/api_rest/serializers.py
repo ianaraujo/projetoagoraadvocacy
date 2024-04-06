@@ -4,4 +4,4 @@ from .models import Propositions
 class PropositionSerializer(serializers.ModelSerializer):
     class Meta:
         model= Propositions
-        Fields= '__all__'
+        fields= '__all__'
