@@ -32,6 +32,7 @@ const Main = styled.div`
         font-weight: 700;
         font-size: 25px;
         color: #191970;
+        margin-bottom:10px;
     }
 `
 const Background = styled.div`

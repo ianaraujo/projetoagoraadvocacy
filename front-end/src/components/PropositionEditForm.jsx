@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { Puff } from "react-loader-spinner"
 
-export default function PropositionEditForm({ id, name, url, keyWords, loadPropositions, setModalOpen }) {
+export default function PropositionEditForm({ id, name, url, keyWords, loadPropositions, setModalOpen, manageModal }) {
     const [propositionInfo, setPropositionInfo] = useState({ name: name, url: url, keyWords: keyWords });
     const [disable, setDisable] = useState(false);
 
@@ -15,13 +15,13 @@ export default function PropositionEditForm({ id, name, url, keyWords, loadPropo
         promise.then(() => {
             loadPropositions();
             setDisable(false);
-            setModalOpen()
+            setModalOpen(!manageModal)
         })
 
         promise.catch(() => {
             setDisable(false)
             alert("Informações invalidas");
-            setModalOpen()
+            setModalOpen(!manageModal)
         });
 
     }

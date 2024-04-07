@@ -12,10 +12,13 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
     const [itsOpen, setItsOpen] = useState(false);
     const [about, setAbout] = useState("");
 
+    console.log(name, manageModal, deleteModal)
+
     function deleteProposition() {
         const promise = axios.delete(`http://127.0.0.1:8000/propositions/${id}`);
 
         promise.then(() => {
+            setDeleteModal(!deleteModal)
             loadPropositions();
         })
     }
@@ -53,7 +56,7 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
                     <FaGear color="orange" fontSize="20px" cursor="pointer" onClick={() => setManageModal(true)} />
                     <Modal isOpen={manageModal} setModalOpen={setManageModal}>
                         <h2>Editar Proposição</h2>
-                        <PropositionEditForm id={id} name={name} url={url} keyWords={keyWords} loadPropositions={loadPropositions} setModalOpen={setManageModal} />
+                        <PropositionEditForm id={id} name={name} url={url} keyWords={keyWords} loadPropositions={loadPropositions} setModalOpen={setManageModal} manageModal={manageModal} />
                     </Modal>
                     <IoTrash color="red" fontSize="20px" cursor="pointer" onClick={() => setDeleteModal(true)} />
                     <Modal isOpen={deleteModal} setModalOpen={setDeleteModal}>
