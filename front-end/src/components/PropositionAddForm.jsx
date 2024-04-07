@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { Puff } from "react-loader-spinner"
 
-export default function PropositionForm({ loadPropositions, propositionList }) {
+export default function PropositionAddForm({ loadPropositions, propositionList }) {
     const [propositionInfo, setPropositionInfo] = useState({ name: '', url: '', keyWords: '' });
     const [disable, setDisable] = useState(false);
 
@@ -62,7 +62,7 @@ export default function PropositionForm({ loadPropositions, propositionList }) {
                 type="text"
                 id="keyWords"
                 value={propositionInfo.keyWords}
-                onChange={(e) => setPropositionInfo({ ...propositionInfo, keyWords: e.target.value.split(";") })}
+                onChange={(e) => setPropositionInfo({ ...propositionInfo, keyWords: e.target.value.split("; ") })}
                 placeholder="Palavra-chave1; Palavra-chave2; Palavra-chave3; etc."
                 disabled={disable} />
 

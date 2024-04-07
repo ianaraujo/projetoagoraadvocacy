@@ -3,8 +3,12 @@ import { FaGear } from "react-icons/fa6";
 import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
+import Modal from "./Modal";
+import PropositionEditForm from "./PropositionEditForm";
 
 export default function Proposition({ id, name, url, keyWords, loadPropositions }) {
+    const [manageModal, setManageModal] = useState(false)
+    const [deleteModal, setDeleteModal] = useState(false)
     const [itsOpen, setItsOpen] = useState(false);
     const [about, setAbout] = useState("");
 
@@ -42,12 +46,24 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
     }
 
     return (
-        <Main onClick={() => toogleContent()}>
+        <Main >
             <PropositionHeader>
-                <h2>{name}</h2>
+                <button onClick={() => toogleContent()} cursor="pointer">{name}</button>
                 <div>
-                    <FaGear color="orange" fontSize="20px" />
-                    <IoTrash color="red" fontSize="20px" cursor="pointer" onClick={() => deleteProposition()} />
+                    <FaGear color="orange" fontSize="20px" cursor="pointer" onClick={() => setManageModal(true)} />
+                    <Modal isOpen={manageModal} setModalOpen={setManageModal}>
+                        <h2>Editar Proposição</h2>
+                        <PropositionEditForm id={id} name={name} url={url} keyWords={keyWords} loadPropositions={loadPropositions} setModalOpen={setManageModal} />
+                    </Modal>
+                    <IoTrash color="red" fontSize="20px" cursor="pointer" onClick={() => setDeleteModal(true)} />
+                    <Modal isOpen={deleteModal} setModalOpen={setDeleteModal}>
+                        <h2>Deletar Proposição</h2>
+                        {`Você tem certeza que deseja deletar os dados da ${name}?`}
+                        <ChoiceDelete>
+                            <button onClick={() => deleteProposition()}>Deletar</button>
+                            <button onClick={() => setDeleteModal(!deleteModal)}>Cancelar</button>
+                        </ChoiceDelete>
+                    </Modal>
                 </div>
             </PropositionHeader>
             {itsOpen ?
@@ -84,10 +100,14 @@ const PropositionHeader = styled.div`
         display: flex;
         justify-content: space-between;
     }
-    h2{
-    font-weight: 700;
-    font-size: 20px;
-    color: #191970;
+
+    >button{
+        cursor: pointer;
+        background-color:white;
+        border: none;
+        font-weight: 700;
+        font-size: 20px;
+        color: #191970;
     }
 `
 
@@ -104,4 +124,30 @@ const PropositionBody = styled.div`
         color:#191970;
         margin-top:10px;
     }
+`
+
+const ChoiceDelete = styled.div`
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    button{
+        width: 40%;
+        height: 45px;
+        font-weight: 700;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        cursor: pointer;
+        border-style: solid;
+        border-width:2px;
+        border-color: #191970;
+        border-radius: 5px;
+        color: #191970;
+    }
+    :first-child{
+        background-color: red;
+        color: white;
+        border: hidden;
+    }
+
 `

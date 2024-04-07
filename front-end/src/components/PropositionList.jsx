@@ -5,7 +5,7 @@ export default function PropositionList({ propositionList, loadPropositions }) {
     return (
         <Main>
             <h1>Proposições Legislativas</h1>
-            {propositionList.map(proposition => <Proposition id={proposition.id} name={proposition.name} url={proposition.url} keyWords={proposition.keyWords} loadPropositions={loadPropositions} />)}
+            {propositionList.map(proposition => <Proposition id={proposition.id} name={proposition.name} url={proposition.url} keyWords={proposition.keyWords} loadPropositions={loadPropositions} propositionList={propositionList} />)}
         </Main>
     )
 }

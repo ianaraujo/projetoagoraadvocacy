@@ -1,6 +1,6 @@
 import axios from "axios";
 import styled from "styled-components";
-import PropositionForm from "./components/PropositionForm";
+import PropositionAddForm from "./components/PropositionAddForm";
 import PropositionList from "./components/PropositionList";
 import { useState, useEffect } from "react";
 
@@ -22,7 +22,7 @@ export default function App() {
     <Main>
       <SideBar>
         <h1>Adicionar Proposição</h1>
-        <PropositionForm propositionList={propositions} loadPropositions={loadPropositions} />
+        <PropositionAddForm propositionList={propositions} loadPropositions={loadPropositions} />
       </SideBar>
       <MainSection>
         <PropositionList propositionList={propositions} loadPropositions={loadPropositions} />
