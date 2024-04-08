@@ -10,7 +10,7 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
     const [manageModal, setManageModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const [itsOpen, setItsOpen] = useState(false);
-    const [about, setAbout] = useState("Nenhuma informação adicional encontrada!");
+    const [about, setAbout] = useState("");
 
     function deleteProposition() {
         const promise = axios.delete(`http://127.0.0.1:8000/propositions/${id}`);
@@ -43,8 +43,12 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
 
             const response = await axios.get(`https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=${type}&numero=${number}&ano=${year}&ordem=ASC&ordenarPor=id`);
 
+
             if (response.data.dados.length > 0) {
                 setAbout(`Ementa: ${response.data.dados[0].ementa}`)
+            }
+            else {
+                setAbout("Nenhuma informação adicional encontrada!");
             }
         }
     }
