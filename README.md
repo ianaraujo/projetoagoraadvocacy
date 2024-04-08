@@ -4,7 +4,7 @@
    <img src="https://www.butia.rs.leg.br/balanca.png/image_preview" width= 250/>
 </p>
 
-## Drescrição
+## Descrição
 
 Uma parte importante do trabalho em Relações Governamentais é o monitoramento de proposições legislativas, devido ao seu alto potencial de impacto sobre os segmentos econômicos, gerando riscos ou, talvez, oportunidades para os negócios. Este projeto visa ser uma ferramenta eficiente e intuitiva para que os usuários se mantenham informados sobre as mudanças e desenvolvimentos nas proposições legislativas que impactam suas áreas de interesse. 
 
@@ -25,7 +25,7 @@ Uma parte importante do trabalho em Relações Governamentais é o monitoramento
 ## Pré-requisitos
 Antes de rodar a aplicação, certifique-se de ter o seguinte instalado em sua máquina:
 
-- [Node.js](https://nodejs.org/en/download/) e [npm](https://www.npmjs.com/):
+- [Node.js](https://nodejs.org/en/download/) e npm:
 Certique-se de ter o  Node.js e o npm (gerenciador de pacotes do Node.js) instalados.
 - [Python](https://www.python.org/downloads/) e pip: Certifique-se de ter o Python 3.x e o pip (gerenciador de pacotes do Python) instalados.
 - [Git](https://git-scm.com/downloads): Certifique-se de ter o Git instalado para clonar o repositório do projeto.
