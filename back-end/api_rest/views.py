@@ -10,9 +10,11 @@ import json
 
 @api_view(['POST', 'GET'])
 def propositions(request):
+    print("==========================")
     if request.method == 'POST':
         newProposition= request.data
-        if 'keyWords' in newProposition and newProposition['keyWords']!="":
+        print(newProposition)
+        if 'keyWords' in newProposition:
             newProposition['keyWords']= json.dumps(newProposition['keyWords'])
 
         serializer= PropositionSerializer(data= newProposition)
@@ -43,7 +45,7 @@ def manageProposition(request, id):
     
     if request.method == 'PUT':
         updatedProposition= request.data
-        if 'keyWords' in updatedProposition and updatedProposition['keyWords']!="":
+        if 'keyWords' in updatedProposition:
             updatedProposition['keyWords']= json.dumps(updatedProposition['keyWords'])
         serializer= PropositionSerializer(proposition, updatedProposition)
 
