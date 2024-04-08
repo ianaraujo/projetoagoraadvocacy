@@ -48,6 +48,8 @@ cd projetoagoraadvocacy/back-end
 Crie um ambiente virtual (opcional, mas recomendado):
 ```
 python -m venv venv
+```
+```
 venv\Scripts\activate
 ```
 Instale as dependências:
