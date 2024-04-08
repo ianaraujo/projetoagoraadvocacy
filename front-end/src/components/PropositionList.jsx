@@ -35,7 +35,7 @@ export default function PropositionList({ propositionList, loadPropositions }) {
                     <Select className="select" options={typeOptions} isClearable={true} isSearchable={true} onChange={(types) => setTypeFilter(types)} placeholder="Tipo" />
                 </div>
             </Filter>
-            {filteredPropositions.map(proposition => <Proposition id={proposition.id} name={proposition.name} url={proposition.url} keyWords={proposition.keyWords} loadPropositions={loadPropositions} propositionList={filteredPropositions} />)}
+            {filteredPropositions.length > 0 ? filteredPropositions.map(proposition => <Proposition id={proposition.id} name={proposition.name} url={proposition.url} keyWords={proposition.keyWords} loadPropositions={loadPropositions} propositionList={filteredPropositions} />) : <h2>Nenhuma proposição encontrada!</h2>}
         </Main>
     )
 }
@@ -51,6 +51,13 @@ const Main = styled.div`
     font-size: 60px;
     color: #191970;
     margin-bottom:30px;
+  }
+
+  h2{
+    margin-top: 10%;
+    font-weight: 500;
+    font-size: 35px;
+    color: grey;
   }
 `
 

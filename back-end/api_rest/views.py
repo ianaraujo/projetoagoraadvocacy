@@ -10,10 +10,8 @@ import json
 
 @api_view(['POST', 'GET'])
 def propositions(request):
-    print("==========================")
     if request.method == 'POST':
         newProposition= request.data
-        print(newProposition)
         if 'keyWords' in newProposition:
             newProposition['keyWords']= json.dumps(newProposition['keyWords'])
 

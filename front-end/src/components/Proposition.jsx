@@ -17,6 +17,7 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
 
         promise.then(() => {
             setDeleteModal(!deleteModal)
+            setItsOpen(false)
             loadPropositions();
         })
     }
@@ -42,9 +43,8 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
             const year = match[3];
 
             const response = await axios.get(`https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=${type}&numero=${number}&ano=${year}&ordem=ASC&ordenarPor=id`);
-
-
             if (response.data.dados.length > 0) {
+                console.log(response.data.dados[0])
                 setAbout(`Ementa: ${response.data.dados[0].ementa}`)
             }
             else {
