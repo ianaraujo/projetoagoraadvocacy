@@ -10,9 +10,7 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
     const [manageModal, setManageModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const [itsOpen, setItsOpen] = useState(false);
-    const [about, setAbout] = useState("");
-
-    console.log(name, manageModal, deleteModal)
+    const [about, setAbout] = useState("Nenhuma informação adicional encontrada!");
 
     function deleteProposition() {
         const promise = axios.delete(`http://127.0.0.1:8000/propositions/${id}`);
@@ -44,7 +42,10 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
             const year = match[3];
 
             const response = await axios.get(`https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=${type}&numero=${number}&ano=${year}&ordem=ASC&ordenarPor=id`);
-            setAbout(response.data.dados[0].ementa)
+
+            if (response.data.dados.length > 0) {
+                setAbout(`Ementa: ${response.data.dados[0].ementa}`)
+            }
         }
     }
 
@@ -72,6 +73,7 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
             {itsOpen ?
                 <PropositionBody>
                     {about}
+                    <span>{`Palavras-chave: ${keyWords}`}</span>
                     <a href={url} target="_blank" rel="noreferrer">Saiba Mais</a>
                 </PropositionBody> : <></>}
         </Main>
@@ -126,6 +128,12 @@ const PropositionBody = styled.div`
         text-decoration: underline;
         color:#191970;
         margin-top:10px;
+    }
+
+    span{
+        margin-top:10px;
+        font-size:13px;
+        color:#cccccc;
     }
 `
 
