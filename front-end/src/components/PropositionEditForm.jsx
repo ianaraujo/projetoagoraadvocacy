@@ -10,7 +10,7 @@ export default function PropositionEditForm({ id, name, url, keyWords, loadPropo
     function submitData(event) {
         event.preventDefault();
         setDisable(true);
-        const promise = axios.put(`http://127.0.0.1:8000/propositions/${id}`, propositionInfo);
+        const promise = axios.put(`http://api/propositions/${id}`, propositionInfo);
 
         promise.then(() => {
             loadPropositions();

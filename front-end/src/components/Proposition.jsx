@@ -13,7 +13,7 @@ export default function Proposition({ id, name, url, keyWords, loadPropositions 
     const [about, setAbout] = useState("");
 
     function deleteProposition() {
-        const promise = axios.delete(`http://127.0.0.1:8000/propositions/${id}`);
+        const promise = axios.delete(`http://api:8000/propositions/${id}`);
 
         promise.then(() => {
             setDeleteModal(!deleteModal)

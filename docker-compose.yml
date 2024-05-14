@@ -1,0 +1,22 @@
+services:
+  api:
+    container_name: rest_api
+    build: ./back-end
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  frontend:
+    container_name: react_client
+    build: ./front-end
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

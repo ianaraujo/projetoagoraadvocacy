@@ -9,7 +9,7 @@ export default function App() {
   const [propositions, setPropositions] = useState([])
 
   function loadPropositions() {
-    const promise = axios.get("http://127.0.0.1:8000/propositions/");
+    const promise = axios.get("http://api:8000/propositions/");
     promise.then((response) => {
       response.data.map(proposition => (proposition.keyWords = JSON.parse(proposition.keyWords)))
       setPropositions(response.data);

@@ -15,7 +15,7 @@ export default function PropositionAddForm({ loadPropositions, propositionList }
         event.preventDefault();
         setDisable(true);
         if (isValid(propositionInfo.name, propositionInfo.url)) {
-            const promise = axios.post("http://127.0.0.1:8000/propositions/", propositionInfo);
+            const promise = axios.post("http://api:8000/propositions/", propositionInfo);
 
             promise.then(() => {
                 loadPropositions();
